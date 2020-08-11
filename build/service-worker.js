@@ -1,4 +1,4 @@
-importScripts("/precache-manifest.6765c232552c5190b345bea6febad60a.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/precache-manifest.6ac69dce08e9b8756f1c5e1b99a6672d.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 self.__precacheManifest = [].concat(self.__precacheManifest || [])
 workbox.precaching.suppressWarnings()
@@ -7,14 +7,8 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest, {})
 workbox.routing.registerNavigationRoute('/index.html')
 
 workbox.routing.registerRoute(
-  /^https?.*/,
-  workbox.strategies.networkFirst(),
-  'GET'
-)
-
-workbox.routing.registerRoute(
   /^https?:\/\/www.themealdb.com\/images\/.*/,
-  workbox.strategies.CacheFirst({
+  new workbox.strategies.CacheFirst({
     cacheName: 'image-cache',
     plugins: [
       new workbox.expiration.Plugin({
@@ -24,4 +18,12 @@ workbox.routing.registerRoute(
     ],
   })
 )
+
+workbox.routing.registerRoute(
+  /^https?.*/,
+  workbox.strategies.networkFirst(),
+  'GET'
+)
+
+
 
