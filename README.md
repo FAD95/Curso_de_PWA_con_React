@@ -16,6 +16,10 @@ PWA que utiliza la API de MealDB para mostrar recetas con sus instrucciones. Alg
 * `npm run dev` para entorno de desarrollo
 * `npm run build && npm start` para producción
 
+## Preview
+
+<https://curso-de-pwa-con-react.vercel.app/)>
+
 ## Licencia
 
 MIT
