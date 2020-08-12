@@ -18,7 +18,7 @@ PWA que utiliza la API de MealDB para mostrar recetas con sus instrucciones. Alg
 
 ## Preview
 
-<https://curso-de-pwa-con-react.vercel.app/)>
+<https://curso-de-pwa-con-react.vercel.app/>
 
 ## Licencia
 
