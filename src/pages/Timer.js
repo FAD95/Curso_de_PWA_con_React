@@ -14,23 +14,31 @@ export default class Timer extends React.Component {
       await Notification.requestPermission()
     if (Notification.permission === 'denied')
       return alert('Bloqueaste las notificaciones :(')
-    if (Notification.permission === 'granted') return
-
-    var timer = this.state.timer
-    this.setState({ timeLeft: timer })
-
-    var countdownInterval = setInterval(() => {
-      timer = timer - 1
+    if (Notification.permission === 'granted') {
+      var timer = this.state.timer
       this.setState({ timeLeft: timer })
-      if (timer <= 0) {
-        clearInterval(countdownInterval)
-        this.showNotification()
-      }
-    }, 1000)
+
+      var countdownInterval = setInterval(() => {
+        timer = timer - 1
+        this.setState({ timeLeft: timer })
+        if (timer <= 0) {
+          clearInterval(countdownInterval)
+          this.showNotification()
+        }
+      }, 1000)
+      return
+    }
   }
 
   showNotification = async () => {
-    // TODO: Enviar Notificación
+    // Enviar Notificación
+    const registration = await navigator.serviceWorker.getRegistration()
+    if (!registration) return alert('No hay un serviceWorker :(')
+
+    registration.showNotification('Mi primer notificacion', {
+      body: 'Mi primer mensaje en una notificacion',
+      img: '/icon.png',
+    })
   }
 
   handleChange = (e) => {
